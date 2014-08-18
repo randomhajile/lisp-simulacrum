@@ -1,6 +1,6 @@
 ## Lisp Simulacrum ##
 # Description #
-This is a toy Lisp interpreter implemented in Python. I wanted to learn more about how
+This is a toy Lisp interpreter implemented in Python3. I wanted to learn more about how
 programming languages work and decided to make a mostly functional Lisp. The tokenizer
 and parser are based on reading [Dragon Book](http://dragonbook.stanford.edu/)
 with the lexer being an implementation of a FSA and the parser being a basic recursive-descent parser.
@@ -11,7 +11,7 @@ in particular, for `apply` and macros. Having said that, any bugs are entirely d
 This is nowhere near a production quality interpreter, but it's not too hard to understand
 and might be useful as a learning tool. The style is not always super Pythonic, and
 there are many places where I chose an approach closer to how I would implement in a
-lower level language.
+lower level language. To run, simply run reader.py, I recommend using rlwrap to make navigation easier.
 
 # Syntax and Not-So-Niceness #
 The syntax is some combination of Scheme and Common Lisp. For example, basic function
