@@ -16,23 +16,20 @@ lower level language. To run, simply run reader.py, I recommend using rlwrap to 
 # Syntax and Not-So-Niceness #
 The syntax is some combination of Scheme and Common Lisp. For example, basic function
 definition look like:
-```
-#!scheme
+```scheme
 (define (square x)
   (* x x))
 ```
 
 More complicated functions, however, borrow some syntax from Common Lisp:
-```
-#!scheme
+```scheme
 (define (foo x &optional y)
   (if (null? y)
     x
     y))
 ```
 and
-```
-#!scheme
+```scheme
 (define (foo x &rest rest)
   (if (null? rest)
     x
@@ -42,14 +39,12 @@ For optional arguments, the default is `nil`, someday I'd like to add user-suppl
 defaults.
 
 Macros are also of a more Common Lisp flavor.
-```
-#!scheme
+```scheme
 (define-macro (plus x y)
   `(+ ,x ,y))
 ```
 Like Common Lisp, macros are *not* hygeinic, which means variable capture is a problem.
-```
-#!scheme
+```scheme
 >>(define-macro (swap x y)
     `(let ((value ,x))
        (set! ,x ,y)
@@ -67,8 +62,7 @@ y
 2
 ```
 A basic `gensym` function has been added to help prevent this.
-```
-#!scheme
+```scheme
 >>(define-macro (swap x y)
     (let ((value (gensym)))
       `(let ((,value ,x))
@@ -91,8 +85,7 @@ swap
 # Tail Call Optimization #
 Quite a bit works out of the box. The main eval loop is done in a way that we get some
 tail-call optimization, thus we can do things like
-```
-#!scheme
+```scheme
 >>(define (fib-iter n a b)
     (if (= n 0)
       a
@@ -109,8 +102,7 @@ even moreso that it's being implemented in a high-level language like Python.
 
 # Macros #
 As mentioned above, Lisp Simulacrum has basic macro functionality.
-```
-#!scheme
+```scheme
 >>(define-macro (plus coll)
     `(+ ,@coll))
 plus
